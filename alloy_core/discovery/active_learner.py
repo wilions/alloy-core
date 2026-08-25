@@ -191,3 +191,27 @@ class MultiFidelityDiscoveryEngine:
         """Computes non-dominated Pareto front over evaluated candidates."""
         sorted_candidates = sorted(self.evaluated_ledger, key=lambda s: self.score_candidate(s), reverse=True)
         self.pareto_front = sorted_candidates[:5]
+
+
+class ActiveLearner:
+    """Bayesian Active Learning acquisition function and uncertainty scoring."""
+
+    def __init__(self, beta: float = 2.0):
+        self.beta = beta
+
+    def acquisition_score(
+        self,
+        predicted_mean: float,
+        uncertainty_std: float,
+        target_val: float,
+        mode: str = "upper_confidence_bound"
+    ) -> float:
+        """Computes Upper Confidence Bound (UCB) / Expected Improvement acquisition score."""
+        if mode == "upper_confidence_bound":
+            # Balance exploitation of high mean and exploration of epistemic uncertainty
+            return float(predicted_mean + self.beta * uncertainty_std)
+        elif mode == "target_distance":
+            dist = abs(predicted_mean - target_val)
+            return float(1.0 / (1.0 + dist) + self.beta * uncertainty_std)
+        else:
+            return float(predicted_mean + self.beta * uncertainty_std)

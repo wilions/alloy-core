@@ -89,3 +89,6 @@ class RecipeReportExporter:
             f.write(report_content)
 
         return output_path
+
+
+DiscoveryReportExporter = RecipeReportExporter

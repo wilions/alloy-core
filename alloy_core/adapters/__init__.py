@@ -1,17 +1,29 @@
 """
-Adapters bridging the 6 specialized alloy agent packages to canonical alloy-core schemas.
+Unified adapter registry bridging domain engines to canonical alloy-core contracts.
 """
 
-from alloy_core.adapters.morph_adapter import MorphAdapter
-from alloy_core.adapters.sinter_adapter import SinterAdapter
-from alloy_core.adapters.pilot_adapter import PilotAdapter
-from alloy_core.adapters.props_adapter import PropsAdapter
-from alloy_core.adapters.lit_adapter import LitAdapter
+from .lab_adapter import LabAdapter
+from .lit_adapter import LitAdapter
+from .props_adapter import PropsAdapter
+from .pilot_adapter import PilotAdapter
+from .morph_adapter import MorphAdapter
+from .sinter_adapter import SinterAdapter
+from .diffuse_adapter import DiffuseAdapter
+from .field_adapter import FieldAdapter
+from .fluid_adapter import FluidAdapter
+from .macro_adapter import MacroAdapter
+from .perform_adapter import PerformAdapter
 
 __all__ = [
+    "LabAdapter",
+    "LitAdapter",
+    "PropsAdapter",
+    "PilotAdapter",
     "MorphAdapter",
     "SinterAdapter",
-    "PilotAdapter",
-    "PropsAdapter",
-    "LitAdapter"
+    "DiffuseAdapter",
+    "FieldAdapter",
+    "FluidAdapter",
+    "MacroAdapter",
+    "PerformAdapter",
 ]

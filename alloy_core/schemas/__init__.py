@@ -33,6 +33,30 @@ from alloy_core.schemas.evidence import (
     DataTier,
     ProvenancePillar
 )
+from alloy_core.schemas.diffusion import (
+    DiffusionCouple,
+    DiffusionCoefficientTensor,
+    DiffusionProfile,
+    InterdiffusionFluxState
+)
+from alloy_core.schemas.fluid import (
+    MeltPoolGeometry,
+    MeltPoolThermalState,
+    PoreDefectMap,
+    MeltPoolCFDResult
+)
+from alloy_core.schemas.macro import (
+    InherentStrainTensor,
+    PartMeshState,
+    ResidualStressState,
+    MacroDistortionResult
+)
+from alloy_core.schemas.performance import (
+    FatigueSNState,
+    CreepRuptureState,
+    OxidationKineticsState,
+    PerformanceEnvelope
+)
 from alloy_core.schemas.pspp import PSPPState
 
 __all__ = [
@@ -62,5 +86,21 @@ __all__ = [
     "EvidenceRecord",
     "DataTier",
     "ProvenancePillar",
+    "DiffusionCouple",
+    "DiffusionCoefficientTensor",
+    "DiffusionProfile",
+    "InterdiffusionFluxState",
+    "MeltPoolGeometry",
+    "MeltPoolThermalState",
+    "PoreDefectMap",
+    "MeltPoolCFDResult",
+    "InherentStrainTensor",
+    "PartMeshState",
+    "ResidualStressState",
+    "MacroDistortionResult",
+    "FatigueSNState",
+    "CreepRuptureState",
+    "OxidationKineticsState",
+    "PerformanceEnvelope",
     "PSPPState"
 ]

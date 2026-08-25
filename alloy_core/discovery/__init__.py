@@ -1,17 +1,19 @@
 """
-Autonomous multi-fidelity discovery and recipe export modules for the Alloy Intelligence Suite.
+Discovery and Active Learning subpackage for the Alloy Intelligence Suite.
 """
 
-from alloy_core.discovery.active_learner import (
-    DiscoveryTarget,
+from .active_learner import (
+    ActiveLearner,
+    MultiFidelityDiscoveryEngine,
     DiscoveryCampaignConfig,
-    MultiFidelityDiscoveryEngine
+    DiscoveryTarget
 )
-from alloy_core.discovery.exporter import RecipeReportExporter
+from .exporter import DiscoveryReportExporter
 
 __all__ = [
-    "DiscoveryTarget",
-    "DiscoveryCampaignConfig",
+    "ActiveLearner",
     "MultiFidelityDiscoveryEngine",
-    "RecipeReportExporter"
+    "DiscoveryCampaignConfig",
+    "DiscoveryTarget",
+    "DiscoveryReportExporter"
 ]

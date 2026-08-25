@@ -16,6 +16,10 @@ from alloy_core.schemas.thermal import ThermalHistoryState
 from alloy_core.schemas.microstructure import MicrostructureState
 from alloy_core.schemas.properties import PropertyTensor
 from alloy_core.schemas.evidence import EvidenceRecord, ProvenancePillar, DataTier
+from alloy_core.schemas.diffusion import DiffusionProfile
+from alloy_core.schemas.fluid import MeltPoolCFDResult
+from alloy_core.schemas.macro import MacroDistortionResult
+from alloy_core.schemas.performance import PerformanceEnvelope
 
 
 class PSPPState(BaseModel):
@@ -27,8 +31,12 @@ class PSPPState(BaseModel):
     composition: MaterialComposition
     recipe: ProcessRecipe
     thermal_history: Optional[ThermalHistoryState] = None
+    fluid_cfd: Optional[MeltPoolCFDResult] = None
+    diffusion_profile: Optional[DiffusionProfile] = None
     microstructure: Optional[MicrostructureState] = None
+    macro_distortion: Optional[MacroDistortionResult] = None
     properties: Optional[PropertyTensor] = None
+    performance: Optional[PerformanceEnvelope] = None
     evidence: EvidenceRecord
     campaign_id: Optional[str] = Field(default=None, description="Campaign ID in alloy-pilot")
     elo_score: float = Field(default=1000.0, description="Tournament Elo score")
