@@ -18,9 +18,16 @@ Canonical PSPP Data Contracts, Multi-Engine Adapters, and Event Bus for the **Un
   - `EvidenceRecord`: Cryptographic SHA-256 integrity hashes, data tier tagging, and DOI / MatWeb citations.
   - `CrossSystemInterchangePackage`: The end-to-end unified PSPP candidate ledger.
 - **Cross-Engine Adapters (`alloy_core.adapters`)**:
-  - `MorphAdapter`: Interoperability with `alloy-morph`.
-  - `SinterAdapter`: Interoperability with `alloy-sinter`.
-  - `PilotAdapter`: Interoperability with `alloy-pilot` (`AlloyForge`).
+  - `PhaseAdapter`: Interoperability with `alloy-phase` (CALPHAD Gibbs equilibria, Scheil solidification, Kou cracking).
+  - `DiffuseAdapter`: Interoperability with `alloy-diffuse` (Multicomponent interdiffusion & homogenization).
+  - `FluidAdapter`: Interoperability with `alloy-fluid` (Melt pool CFD, Marangoni flow, defect mapping).
+  - `FieldAdapter`: Interoperability with `alloy-field` (KGT dendrite tip growth, Hunt CET, Cellular Automata).
+  - `MorphAdapter`: Interoperability with `alloy-morph` (Microstructure-property surrogate mapping).
+  - `MacroAdapter`: Interoperability with `alloy-macro` (Inherent strain FEM, cantilever distortion).
+  - `PbfAdapter`: Interoperability with `alloy-pbf` (Voxel build simulation, HIP densification, support optimization).
+  - `SinterAdapter`: Interoperability with `alloy-sinter` (DEM packing, DP-Cap compaction, SOVS sintering, CZM fracture).
+  - `PerformAdapter`: Interoperability with `alloy-perform` (Tanaka-Mura fatigue S-N, Monkman-Grant creep, Wagner oxidation).
+  - `PilotAdapter`: Interoperability with `alloy-pilot` (`AlloyForge` orchestrator).
   - `PropsAdapter`: Grounding against MatWeb database in `alloy-props`.
   - `LitAdapter`: Grounding against OKF literature records in `alloy-lit`.
   - `LabExecutionAdapter`: Translation of PSPP recipes into SiLA 2 / OPC UA robotic hardware commands and automated experimental observation ingestion.
