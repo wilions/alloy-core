@@ -57,6 +57,11 @@ from alloy_core.schemas.performance import (
     OxidationKineticsState,
     PerformanceEnvelope
 )
+from alloy_core.schemas.envelope import (
+    QuantityValue,
+    ProvenanceNode,
+    ResultEnvelope
+)
 from alloy_core.schemas.pspp import PSPPState
 
 __all__ = [
@@ -102,5 +107,8 @@ __all__ = [
     "CreepRuptureState",
     "OxidationKineticsState",
     "PerformanceEnvelope",
-    "PSPPState"
+    "PSPPState",
+    "QuantityValue",
+    "ProvenanceNode",
+    "ResultEnvelope"
 ]

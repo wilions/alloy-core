@@ -15,11 +15,14 @@ from .fluid_adapter import FluidAdapter
 from .macro_adapter import MacroAdapter
 from .pbf_adapter import PbfAdapter, PbfBuildResult
 from .perform_adapter import PerformAdapter
+from .okf_adapter import UnifiedOKFAdapter, OKFQueryResult
 
 __all__ = [
     "LabAdapter",
     "LitAdapter",
     "PropsAdapter",
+    "UnifiedOKFAdapter",
+    "OKFQueryResult",
     "PilotAdapter",
     "PhaseAdapter",
     "PhaseEquilibriumResult",
