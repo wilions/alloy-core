@@ -16,6 +16,8 @@ from .macro_adapter import MacroAdapter
 from .pbf_adapter import PbfAdapter, PbfBuildResult
 from .perform_adapter import PerformAdapter
 from .okf_adapter import UnifiedOKFAdapter, OKFQueryResult
+from .zotero_adapter import ZoteroAdapter, ZoteroItem, ZoteroCollection, ZoteroCreator
+from .ppt_adapter import PPTAdapter, PPTDeckSpec, PPTSlide, PPTCard
 
 __all__ = [
     "LabAdapter",
@@ -35,4 +37,13 @@ __all__ = [
     "PbfAdapter",
     "PbfBuildResult",
     "PerformAdapter",
+    "ZoteroAdapter",
+    "ZoteroItem",
+    "ZoteroCollection",
+    "ZoteroCreator",
+    "PPTAdapter",
+    "PPTDeckSpec",
+    "PPTSlide",
+    "PPTCard",
 ]
+

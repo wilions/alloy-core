@@ -59,3 +59,58 @@ def test_pilot_adapter():
     assert pspp.candidate_id == "CAN-42"
     assert pspp.elo_score == 1150.0
     assert pspp.recipe.route.value == "pm_sintering"
+
+
+def test_zotero_and_ppt_adapters():
+    from alloy_core.adapters.zotero_adapter import ZoteroAdapter
+    from alloy_core.adapters.ppt_adapter import PPTAdapter
+
+    raw_zot = {
+        "key": "ZOT12345",
+        "data": {
+            "title": "Solidification Cracking in Additive Manufacturing of Al Alloys",
+            "itemType": "journalArticle",
+            "creators": [
+                {"firstName": "John", "lastName": "Doe", "creatorType": "author"}
+            ],
+            "publicationTitle": "Acta Materialia",
+            "date": "2025-04-12",
+            "DOI": "10.1016/j.actamat.2025.101234",
+            "tags": [{"tag": "Additive Manufacturing"}, {"tag": "Cracking"}]
+        },
+        "has_pdf": True
+    }
+
+    item = ZoteroAdapter.parse_item(raw_zot)
+    assert item.key == "ZOT12345"
+    assert item.title == "Solidification Cracking in Additive Manufacturing of Al Alloys"
+    assert item.year == "2025"
+    assert item.has_pdf is True
+    assert len(item.creators) == 1
+    assert item.creators[0].full_name == "John Doe"
+
+    ev = ZoteroAdapter.to_evidence_record(item)
+    assert ev.doi == "10.1016/j.actamat.2025.101234"
+    assert ev.zotero_key == "ZOT12345"
+    assert "Additive Manufacturing" in ev.metadata["tags"]
+
+    manifest = {
+        "status": "COMPLETED_OPTIMAL",
+        "total_iterations": 2,
+        "executed_nodes": [
+            {"node_id": "NODE-01-CALPHAD", "server": "alloy-phase-mcp", "tool": "pycalphad_equilibrium", "status": "PASSED"},
+            {"node_id": "NODE-02-PERFORM", "server": "alloy-perform-mcp", "tool": "perform_evaluate_creep_rupture", "status": "PASSED"}
+        ]
+    }
+    deck = PPTAdapter.manifest_to_deck_spec(
+        campaign_title="AlloyForge Discovery Deck",
+        spec_id="SPEC-TEST-001",
+        manifest=manifest,
+        provenance_hash="sha256:abcdef"
+    )
+    assert deck.title == "AlloyForge Discovery Deck"
+    assert len(deck.slides) == 4
+    assert deck.slides[0].type == "title_slide"
+    assert deck.slides[2].type == "table_slide"
+    assert len(deck.slides[2].rows) == 2
+
